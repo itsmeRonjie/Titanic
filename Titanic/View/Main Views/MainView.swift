@@ -91,19 +91,35 @@ struct MainView: View {
                 .disabled(showAlert)
                 
                 if showAlert {
-                    Button {
-                        withAnimation {
-                            showAlert.toggle()
-                        }
-                    } label: {
-                        if let survival {
-                            VStack {
-                                Text(survival ? "SURVIVED!" : "DID NOT SURVIVE")
-                                Text("Probability of Survival: \(String(format: "%.02f", survivalRate * 100))%")
+                    VStack {
+                        Spacer()
+                        Button {
+                            withAnimation {
+                                showAlert.toggle()
                             }
-                            .padding()
-                            .background(Color.black)
-                            .foregroundStyle(.white)
+                        } label: {
+                            if let survival {
+                                VStack {
+                                    Text(survival ? "SURVIVED!" : "DID NOT SURVIVE")
+                                    Text("Probability of Survival: \(String(format: "%.02f", survivalRate * 100))%")
+                                }
+                                .padding()
+                                .background(Color.black)
+                                .foregroundStyle(.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
+                        }
+                        Spacer()
+                        Button {
+                            withAnimation {
+                                showAlert.toggle()
+                            }
+                        } label: {
+                            Label("", systemImage: "xmark.circle.fill")
+                                .font(.largeTitle)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.primary)
+                                .padding()
                         }
                     }
                 }
