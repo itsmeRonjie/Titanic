@@ -99,8 +99,7 @@ struct MainView: View {
                         if let survival {
                             VStack {
                                 Text(survival ? "SURVIVED!" : "DID NOT SURVIVE")
-                                
-                                Text("Probability of Survival: \(survivalRate)")
+                                Text("Probability of Survival: \(String(format: "%.02f", survivalRate * 100))%")
                             }
                             .padding()
                             .background(Color.black)
